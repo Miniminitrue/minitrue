@@ -6,7 +6,9 @@
 
 ## Abstract
 
-Minitrue est un réseau social privé regroupant des artistes, des penseurs, des philosophes et journalistes. Les membres publient, votent et échangent sur les créations entre eux en interne. Une selection des oeuvres les plus populaires peuple la partie publique du site. Un jeu d'esprit implémenté au sein même du réseau social apporte une dynamique qui favorise les échanges et la création.
+Minitrue est un réseau social privé, (payant par souscription de 5 euros par mois) regroupant des artistes, des penseurs, des philosophes, journalistes, et les supporteurs de leurs travail. Les membres publient, votent, collaborent et échangent sur les créations entre eux en interne. Une selection des oeuvres les plus populaires peuple la partie publique du site, qui integre les travaux du collectif Minitrue (le noyeau) avec les meilleurs oeuvres de la communauté (la communauté). Un jeu d'esprit implémenté au sein même du réseau social apporte une dynamique qui favorise les échanges et la création.
+
+L'idée et de faciliter la creation, la cocreation, le crowdsourcing, et le crowdfunding de la verité.
 
 ## En vrac
 
@@ -15,18 +17,23 @@ Minitrue est un réseau social privé regroupant des artistes, des penseurs, des
 * Portfolio
 * Blog
 * Votes
-* Likes/upvotes
+* Favoris/upvotes + Collection de favoris
 * Follow
-* Feedback (request d'un user à un autre pour avoir du feed back sur une ouevre)
+* Feedback (request d'un user à un autre pour avoir du feed back sur une ouevre; request a la foule pour avoir du feedback de n'importe qui - connecté avec quelqu'un qui propose du feedback)
+* Collaborations (mettre sur profil si on est ouvert au collab - offrir une collab - oeuvre apparait sur portfolio commun ou seulement sur chacun?)
 * Notifications
 * Messagerie interne 
-
+* Crowdsourcing (quelqu'un propose un project (ex un documentaire sur l'argentine), la foule upvote, et un artiste propose de le realiser, propose un budget, et realise un crowdfunding)
+* Dictionnaire personnel (partie du portfolio - capacité de definir n'importe quelle mot - quand hover-over, une boite apparait avec la definition personnel. Apliqué au jeu et au mini-verité posté sur le portfolio.) ((System de **GSM**:Grok, Skim, Master (Grok = definition de 5-15 mots; un click, on ouvre le Skim=15-30; un click de plus, on ouvre le Master=30-60 mots)
+* Jeu de microblogging philosophique avec dynamique d'echec.
+* Chaque verité et chaque jet, oeuvres etc ont un numéro distinct. Une nouvelle ouvre, jets, verité, un numero de plus.
+* Resumé de livre, d'article en GSM
 * Transactions financières (donation, payement, ...)
     * possibilité d'utiliser des outils externes dans un premier temps: Patreon, Paypal, Crowdfunding dans certains cas...
 
 > "Est-ce qu'une solution polyvalente te va. C'est à dire que les utilisateurs enregistrés, ont la possibilité d'ouvir une "page" (appelons là une page pour le moment) qui leur donne la possibilité d'afficher leur créations (text, image, audio, video) sous la forme d'un blog, (des articles les uns à la suite des autres) mais avec la possibilité de sélectionner un certain nombre de leurs créations pour les mettre en avant."
 
-
+**Oui**
 
 
 ## Questions
@@ -39,13 +46,24 @@ Un des gros points forts c'est que ce système est dit "auto modéré". Les post
 
 Excellent pour stackExchange qui n'a pas vocation à être une board de discussion mais plus une encyclopédie. <span style="color:green"> Est-ce que c'est ce que tu veux ici?</span>
 
-* [plus d'info sur ce système](https://en.wikipedia.org/wiki/Stack_Overflow)
+----
+
+Il s'agit de une part un reseau social traditionel: **"Social"**, d'autre part un reddit pour contenu original **"Work"**, et un jeu qui a aussi un systeme de upvote a la reddit **"Work"**. Trois feed separé.
+
+Il pourrait aussi avoir une feed general qui combine les trois.
 
 # Applications
 
 ## Vitrine publique
 
 Site semi statique qui contient une sélection des créations internes mise en avant. Renouvellement du contenu régulier mais globalement peu d'accès à la DB de cette partie.
+
+**Fonction de la Vitrine publique**
+
+* All, New, Popular (comme reddit)
+* Choisir les categories qu'on veut.
+* Upvote mais pas downvote
+* Infinite Scroll 
 
 ## Reseau social privé
 
@@ -59,6 +77,7 @@ Hybride board / réseau social
 * Votes 
 * likes/upvotes
 * Follow
+* Commentaires (mais suelement dans social; pour Work, seulement avec un accord de feedback)
 * Notifications
 * Messagerie interne 
 * Feeds filtrables
@@ -67,7 +86,9 @@ Hybride board / réseau social
 **Fonctionnalités originales:**
 * Feedback (request d'un user à un autre pour avoir du feed back sur une oeuvre)
 * TrueGame
-* `diff`/versionning d'oeuvres 
+* `diff`/versionning d'oeuvres (si on clique sur une oeuvre, on peut voir son passé et contexte. Ceci inclus des notes, des autres oeuvres qui ont inspiré, des autres jets. On peut aussi y voir le feedback donné.)
+* Collaborations
+* Microtransactions
 
 **Fonctionnalités autres:**
 * Page de profile hautement personnalisable
@@ -112,7 +133,11 @@ $\Rightarrow$ Chaque élément de contenu créé par un utilisateur est un poten
 ## TrueGame
 
 ### Vue haut niveau
-Au coeur de la dynamique de la partie privée du réseau, ce jeu permet à un utilisateur de proposer une partie à un autre utilisateur (<span style="color:green">temps réel, ou différé, pas de contrainte de temps sauf si choix explicite</span>). Le premier joueur envoie une _vérité_ (déclaration ou question) formulée entre un minimum de $a$ mots et un maximum de $b$ mots. Le second joueur y répond avec les mêmes contraintes. Le jeux se termine au bout de $n$ échanges ou en fonction d'une éventuelle contrainte de temps.
+Au coeur de la dynamique de la partie privée du réseau, ce jeu permet à un utilisateur de proposer une partie à un autre utilisateur (<span style="color:green">temps réel, ou différé, pas de contrainte de temps sauf si choix explicite</span>). Le premier joueur envoie une _vérité_ (déclaration ou question) formulée entre un minimum de $a$ mots et un maximum de $b$ mots (ou choisis de commencer avec une verité tirer du DB au hasard). Le second joueur y répond avec les mêmes contraintes. Le jeux se termine au bout de $n$ échanges ou en fonction d'une éventuelle contrainte de temps.
+
+On peut aussi commencer une partie en postant dans le feed jeux.
+
+
 
 ### Contraintes d'implémentation
 
@@ -122,12 +147,22 @@ Au coeur de la dynamique de la partie privée du réseau, ce jeu permet à un ut
 
 ### Améliorations possibles
 
+* Choix de publier le jeux ou le garder en privé
+* Upvote/downvote sur les verité (trois choix: -1, +1, +2) (vote possible partout sur le site)
+* Point de profil: un point pour chaque tour, + les points donner par les autres)
+* Mettre une selection de ses meilleurs verité sur son portfolio.
+* Definir des mots dans son dictionnaire personnel pour que les autres utilisateurs puissent mieux comprendre les verités
 * Obs
 * Plus que deux joueurs
+* regarder le jeux en temps reel de quelqu'un d'autre (les meilleurs jouers)
+* Choisir de connecter avec quelqu'un qui a + ou - 100/200/etc de points de soi meme.
 * Algo qui assure un certain niveau de profondeur des arguments. (Si jamais on trouve une solution à ça, cette IA sera probablement très proche du niveau d'intelligence d'un être humain et plus rien ne sera pareil après ça :D)
+* Jouer contre l'ordinateur: ordinateur anaylze mots clés et repond avec une verité proche.
 * Possibilité de proposer une langue pour la partie.
 * Dessin à la place de texte
 * Audio à la place de texte. (bonne foie pour la longueur des phrases ou algo de traitement du signal qui va compter les mots [QOS: best effort])
+(j'ai compter une phrase de 15 mots dis tres lentement: pas plus de 15 secondes)
+* Audio + Text + dessin
 
 
 # Sécurité
